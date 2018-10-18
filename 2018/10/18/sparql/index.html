@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="语义网 sparql," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="宇飞丶站点" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="SPARQL的查询是基于结构化知识的，变无序数据为有序知识，让计算机理解Web信息，即语义Web。现如今，语义网适用于各个领域，包括语义出版、语义知识库等。SPARQL是针对以RDF框架进行存储的知识库进行检索的SQL语句，因此有一定SQL基础的话，学习会很容易。 什么是语义网？ 语义网是一种使用可以被计算机理解的方式描述事物的网络。 林俊杰是著名歌手。小酒窝是林俊杰唱的。林俊杰也是演员。像这样的">
+<meta name="keywords" content="语义网 sparql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SPARQL查询语言">
+<meta property="og:url" content="http://yoursite.com/2018/10/18/sparql/index.html">
+<meta property="og:site_name" content="宇飞丶站点">
+<meta property="og:description" content="SPARQL的查询是基于结构化知识的，变无序数据为有序知识，让计算机理解Web信息，即语义Web。现如今，语义网适用于各个领域，包括语义出版、语义知识库等。SPARQL是针对以RDF框架进行存储的知识库进行检索的SQL语句，因此有一定SQL基础的话，学习会很容易。 什么是语义网？ 语义网是一种使用可以被计算机理解的方式描述事物的网络。 林俊杰是著名歌手。小酒窝是林俊杰唱的。林俊杰也是演员。像这样的">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-26T02:23:03.806Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SPARQL查询语言">
+<meta name="twitter:description" content="SPARQL的查询是基于结构化知识的，变无序数据为有序知识，让计算机理解Web信息，即语义Web。现如今，语义网适用于各个领域，包括语义出版、语义知识库等。SPARQL是针对以RDF框架进行存储的知识库进行检索的SQL语句，因此有一定SQL基础的话，学习会很容易。 什么是语义网？ 语义网是一种使用可以被计算机理解的方式描述事物的网络。 林俊杰是著名歌手。小酒窝是林俊杰唱的。林俊杰也是演员。像这样的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/18/sparql/"/>
+
+
+
+
+
+  <title>SPARQL查询语言 | 宇飞丶站点</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	
+	<a href="https://github.com/yufei-zh/yufei-zh.github.io" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">宇飞丶站点</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">明明可以靠脸吃饭,我却要努力学习.大概这是我和明明的差距吧。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/sparql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="皂雨霏霏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇飞丶站点">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SPARQL查询语言</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T08:50:18+08:00">
+                2018-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识图谱/" itemprop="url" rel="index">
+                    <span itemprop="name">知识图谱</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>SPARQL的查询是基于结构化知识的，变无序数据为有序知识，让计算机理解Web信息，即语义Web。现如今，语义网适用于各个领域，包括语义出版、语义知识库等。SPARQL是针对以RDF框架进行存储的知识库进行检索的SQL语句，因此有一定SQL基础的话，学习会很容易。</p>
+<p>什么是语义网？</p>
+<p>语义网是一种使用可以被计算机理解的方式描述事物的网络。</p>
+<p>林俊杰是著名歌手。<br>小酒窝是林俊杰唱的。<br>林俊杰也是演员。<br>像这样的句子可以被人类理解。但是如何能够被计算机理解呢？<br><a id="more"></a></p>
+<p>陈述是由语法规则构建的。一门语言的语法定义了构建该语言的陈述所需的规则。</p>
+<p>这就是语义网的本质所在 - 以计算机应用程序可以理解的方式描述事物。</p>
+<p>语义网和网页之间的链接没有关系。</p>
+<p>语义网描述的是事物之间的关系（比方说 A 是 B 的一部分，而 Y 是 Z 的成员）以及事物的属性（例如尺寸、重量、使用期限和价格等等）。</p>
+<p>资源描述框架</p>
+<p>RDF(资源描述框架，Resource Description Framework)是一种用于描述网络上的信息和资源的的标记语言。</p>
+<p>将信息至于 RDF 文件之中，这样的话，这些信息就有可能被计算机程序（”web spiders”）从网络中搜索、发现、摄取、筛选、分析和处理。</p>
+<p>语义网使用 RDF 来描述网络资源。</p>
+<p>如果希望学习更多关于 RDF 的知识，请参考 <a href="http://www.w3school.com.cn/rdf/index.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/rdf/index.asp</a> 。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>当信息被表示为RDF后，出于推理和应用开发的需要，我们需要能够存取其中的部分。也就是需要叫做SPARQL的语言，它能够让我们通过选择、抽取等方式很容易地从被表示为RDF的知识中获得特定的部分。SPARQL是专为RDF设计的，适合并依赖于万维网上的各种技术。</p>
+<p>SPARQL基础设施：</p>
+<p>想要执行一条SPARQL查询，就需要一个能执行查询的软件。能做到这一点的最常用的软件叫做三元组存储库。本质上，一个三元组存储库就是一个RDF的数据库。在网上可以下载到很多三元组存储库。在SPARQL的相关规范中，三元组存储库也称为图存储库。 在查询一个三元组存储库之前，需要先向其中填充RDF数据。大部分三元组存储库都提供批量上传的选项。也有一种称为SPARQL更新的机制，提供了一系列向三元组存储库中插入、加载及删除RDF的选项。</p>
+<h2 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h2><p>###简单的查询</p>
+<pre><code>Data:
+        &lt;http://example.org/book/book1&gt;
+        &lt;http://purl.org/dc/elements/1.1/title&gt;
+    &quot;SPARQL Tutorial&quot; .
+Query:
+    SELECT ?title 
+    WHERE { &lt;http://example.org/book/book1&gt;        
+        &lt;http://purl.org/dc/elements/1.1/title&gt; 
+        ?title . }
+Result:Title
+        SPARQL Tutorial
+</code></pre><p>例如，要在这段数据中做一个查询。找到这本书的书名。</p>
+<p>在SPARQL中，我们可以将三元组中的任何一个元素替换为一个变量。变量的首字符是一个？（问号）。要引入一个变量表示所要查询的位置。</p>
+<p>三元组存储库将接收这个图模式并尝试去找到能够匹配这个模式的那些三元组集合。因此找到了主谓一致的三元组。并返回它的宾语。</p>
+<p>如这个例子中，Data中有一个三元组，在构建查询的时候，利用select关键词构造主语和谓语，宾语作为变量返回，系统会根据查询式构造一个三元组图模式与RDF库中的所有三元组进行匹配，将满足条件的结果返回。</p>
+<h3 id="多个匹配"><a href="#多个匹配" class="headerlink" title="多个匹配"></a>多个匹配</h3><pre><code>Data:
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+_:a foaf:name &quot;Johnny Lee Outlaw&quot; . 
+_:a foaf:mbox &lt;mailto:jlow@example.com&gt; . 
+_:b foaf:name &quot;Peter Goodguy&quot; .
+_:b foaf:mbox &lt;mailto:peter@example.org&gt; .
+_:c foaf:mbox &lt;mailto:carol@example.org&gt;.
+
+Query:
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt; 
+SELECT  ?name  ?mbox 
+WHERE { ?x foaf:name ?name . 
+    ?x foaf:mbox ?mbox }
+</code></pre><p>与turtle类似，PREFIX关键词指明各种各种URL的缩写。返回的结果中，每一格表示一个结果。</p>
+<p>Data中的_:a _:b _:c是空白节点，没有具体意义，且字母不固定，只是用来区分不同的实体资源。</p>
+<h3 id="条件限制"><a href="#条件限制" class="headerlink" title="条件限制"></a>条件限制</h3><p>如果上述的简单查询不能满足查询需求，则需要对查询的结果进行一定的条件限制，常用的限制字段主要为：filter、optinal、union。</p>
+<p>Filter：限制数字或字符串符合一定要求的结果。数值型数据类型（即整数型、小数）和日期/时间都支持小于、大于和等于运算。</p>
+<p>Optional关键词告诉三元组存储库为特定的图模式返回结果——如果能找到。即对于待返回的查询而言，这个图模式未必要满足。</p>
+<p>UNION关键词告诉三元组存储库返回那些仅匹配一个图模式或两个都匹配的结果。</p>
+<p>通过例子来进行学习：</p>
+<pre><code>Data：
+@prefix dc:&lt;http://purl.org/dc/elements/1.1/&gt; . 
+@prefix : &lt;http://example.org/book/&gt; . 
+@prefix ns: &lt;http://example.org/ns#&gt; .
+:book1   dc:title   &quot;SPARQL Tutorial&quot; . 
+:book1   ns:price   42 . 
+:book2   dc:title   &quot;The Semantic Web&quot; . 
+:book2   ns:price   23 .
+
+Query:
+PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt; 
+PREFIX ns: &lt;http://example.org/ns#&gt; 
+SELECT ?title ?price 
+WHERE {  ?x  ns:price  ?price . 
+     FILTER (?price &lt; 30) 
+     ?x  dc:title  ?title . }
+</code></pre><p>可以看到，filter字段通过对price的限制，筛选出了price小于30的所有实体，并返回title和price。</p>
+<pre><code>Data：
+@prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt; . 
+@prefix : &lt;http://example.org/book/&gt; . 
+@prefix ns: &lt;http://example.org/ns#&gt; .
+:book1   dc:title   &quot;SPARQL Tutorial&quot; . 
+:book1   ns:price   42 . 
+:book2   dc:title   &quot;The Semantic Web&quot; . 
+:book2   ns:price   23 .
+
+Query1:
+PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt; 
+SELECT ?title 
+WHERE { ?x dc:title ?title 
+        FILTER regex(?title, &quot;^SPARQL&quot;) 
+    }
+
+Query2:
+PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt; 
+SELECT ?title 
+WHERE { ?x dc:title ?title 
+     FILTER regex(?title, &quot;web&quot;, &quot;i&quot; ) 
+}
+</code></pre><p>filter字段不仅可以对数字进行限制，还可以利用正则表达式进行对字符串的限制，filter加上regex，括号中表明变量?title，字符串str，即过滤出变量包含str的实体，str前面加^即表示以str开头，否则默认为包含有。</p>
+<p>OPTIONAL表示有则返回，没有则返回空。UNION表示满足任一即返回，相当于布尔逻辑中的OR。</p>
+<h2 id="组织结果集"><a href="#组织结果集" class="headerlink" title="组织结果集"></a>组织结果集</h2><p>我们想要查询结果以一种特定的方式返回：分组的、计数的或排序的。SPARQL支持一些函数来帮助我们组织结果集。</p>
+<p>Order: put the solutions in order</p>
+<p>Distinct: ensure solutions in the sequence are unique
+　　</p>
+<p>Reduced: permit elimination of some non-unique solutions
+　　</p>
+<p>Offset: control where the solutions start from in the overall sequence of solutions
+　　</p>
+<p>Limit: restrict the number of solutions</p>
+<p>在更大的数据集上，我们可能不知道有多少条结果，或者我们的查询会不会返回整个数据集。因此，一个好的做法就是限制一条查询能返回的答案的数量。就是LIMIT关键词。</p>
+<pre><code>Query:
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt; 
+SELECT  ?name 
+WHERE { ?x foaf:name ?name } 
+LIMIT 20  //限制返回结果为20条
+
+Data:
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; . 
+_:x foaf:name &quot;Alice&quot; . 
+_:x foaf:mbox &lt;mailto:alice@example.com&gt; . 
+_:y foaf:name &quot;Alice&quot; .
+_:y foaf:mbox &lt;mailto:asmith@example.com&gt; .
+_:z foaf:name &quot;Alice&quot; . 
+_:z foaf:mbox &lt;mailto:alice.smith@example.com&gt; .
+
+Query:
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;        
+SELECT ?name 
+WHERE { ?x  foaf:name ?name }
+
+Query:
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;        
+SELECT DISTINCT ?name  
+WHERE { ?x  foaf:name ?name }
+</code></pre><p> DISTINCT关键字，可以保证结果唯一，REDUCED会对重复的结果进行适当的减少，不同的情况用不同的限制。</p>
+<p>在SPARQL中，使用ORDER BY关键词来对返回的结果集排序。例如，按公寓所含卧室数量进行排序。</p>
+<p>DESC关键词指明了按降序排列。ASC指的是升序。</p>
+<p>此外，字符串得排序是根据字典序。</p>
+<h2 id="查询方式"><a href="#查询方式" class="headerlink" title="查询方式"></a>查询方式</h2><p>SPARQL有四种查询形式。</p>
+<p>SELECT：在查询匹配模式中，返回所有的，或者部分子集。</p>
+<p>CONSTRUCT：通过取代三元组中的变量，返回一个新RDF图模式。</p>
+<p>ASK：返回一个布尔值，显示是否有匹配项。</p>
+<p>DESCRIBE：返回一个表述资源的RDF图模式。</p>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p> sparql的使用方式主要为两种，一种是网页知识库提供的查询端口，例如wikidata中提供的query service，在不同的知识库中有不同的词表属性，对不同的实体和属性有不同的ID号，需要另外学习，但是基本的语法基本一样，看几个例子便可以使用；第二种是利用Jena包编写代码进行自定义查询，当然还有很多工具平台也提供了sparql端口，例如D2RQ，但是它的底层实现也是基于Jena实现对于RDF的解析和可视化。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+	
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/语义网-sparql/" rel="tag"><i class="fa fa-tag"></i> 语义网 sparql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/18/python反射机制/" rel="next" title="Python反射机制">
+                <i class="fa fa-chevron-left"></i> Python反射机制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/18/七月/" rel="prev" title="July">
+                July <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/touxiang.jpg"
+                alt="皂雨霏霏" />
+            
+              <p class="site-author-name" itemprop="name">皂雨霏霏</p>
+              <p class="site-description motion-element" itemprop="description">山西大学研究僧一枚。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="iszhaoyufei@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配模式"><span class="nav-number">2.</span> <span class="nav-text">匹配模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多个匹配"><span class="nav-number">2.1.</span> <span class="nav-text">多个匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件限制"><span class="nav-number">2.2.</span> <span class="nav-text">条件限制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组织结果集"><span class="nav-number">3.</span> <span class="nav-text">组织结果集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询方式"><span class="nav-number">4.</span> <span class="nav-text">查询方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方式"><span class="nav-number">5.</span> <span class="nav-text">使用方式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">皂雨霏霏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
