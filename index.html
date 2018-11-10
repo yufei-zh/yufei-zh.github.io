@@ -393,8 +393,7 @@
 
       
         
-          
-            <h2 id="元素分类"><a href="#元素分类" class="headerlink" title="元素分类"></a>元素分类</h2><p>有如下值集合 [11,22,33,44,55,66,77,88,99,90…]，将所有大于 66 的值保存至字典的第一个key中，将小于 66 的值保存至第二个key的值中。<br>即： {‘k1’: 大于66的所有值, ‘k2’: 小于66的所有值}</p>
+          <h2 id="元素分类"><a href="#元素分类" class="headerlink" title="元素分类"></a>元素分类</h2><p>有如下值集合 [11,22,33,44,55,66,77,88,99,90…]，将所有大于 66 的值保存至字典的第一个key中，将小于 66 的值保存至第二个key的值中。<br>即： {‘k1’: 大于66的所有值, ‘k2’: 小于66的所有值}</p>
 <pre><code>li=[11,22,33,44,55,66,77,88,99,90]
 dic={&apos;k1&apos;:[ ],&apos;k2&apos;:[ ]}
 for i in li:
@@ -404,79 +403,14 @@ for i in li:
     else:
         dic[&apos;k2&apos;].append(i)
 print(dic)
-</code></pre><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>查找列表中元素，移除每个元素的空格，并查找以 a或A开头 并且以 c 结尾的所有元素。</p>
-<p>li = [“alec”, “ aric”, “Alex”, “Tony”, “rain”]</p>
-<p>tu = (“alec”, “ aric”, “Alex”, “Tony”, “rain”) </p>
-<p>dic = {‘k1’: “alex”, ‘k2’: ‘ aric’,  “k3”: “Alex”, “k4”: “Tony”}</p>
-<pre><code>li = [&quot;alec&quot;, &quot; aric&quot;, &quot;Alex&quot;, &quot;Tony&quot;, &quot;rain&quot;]
-tu = (&quot;alec&quot;, &quot; aric&quot;, &quot;Alex&quot;, &quot;Tony&quot;, &quot;rain&quot;)
-dic = {&apos;k1&apos;: &quot;alex&quot;, &apos;k2&apos;: &apos; aric&apos;,  &quot;k3&quot;: &quot;Alex&quot;, &quot;k4&quot;: &quot;Tony&quot;}
-ret = []
-for i in li:
-    i = i.strip()
-    if i.startswith(&apos;a&apos;or&apos;A&apos;) and i.endswith(&apos;c&apos;):
-        ret.append(i)
-for i in tu:
-    i = i.strip()
-    if i.startswith(&apos;a&apos;or&apos;A&apos;) and i.endswith(&apos;c&apos;):
-        ret.append(i)
-for i in dic:
-    i = i.strip()
-    if i.startswith(&apos;a&apos;or&apos;A&apos;) and i.endswith(&apos;c&apos;):
-        ret.append(i)
-print(ret)
-
-#结果：[&apos;alec&apos;, &apos;aric&apos;, &apos;alec&apos;, &apos;aric&apos;]
-</code></pre><h2 id="输出商品列表，用户输入序号，显示用户选中的商品"><a href="#输出商品列表，用户输入序号，显示用户选中的商品" class="headerlink" title="输出商品列表，用户输入序号，显示用户选中的商品"></a>输出商品列表，用户输入序号，显示用户选中的商品</h2><p>商品 li = [“手机”, “电脑”, ‘鼠标垫’, ‘游艇’]</p>
-<pre><code>li=[&quot;手机&quot;,&quot;电脑&quot;,&quot;鼠标垫&quot;,&quot;游艇&quot;]
-print(&quot;0是手机，1是电脑，2是鼠标垫，3是游艇&quot;)
-num=input(&quot;请输入数字：&quot;)
-if num==&apos;0&apos;:
-    print(li[0])
-elif num==&apos;1&apos;:
-    print(li[1])
-elif num==&apos;2&apos;:
-    print(li[2])
-elif num==&apos;3&apos;:
-    print(li[3])
-else:
-    print(&apos;&apos;)
-</code></pre><h2 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h2><p>功能要求：</p>
-<p>要求用户输入总资产，例如：2000</p>
-<p>显示商品列表，让用户根据序号选择商品，加入购物车</p>
-<p>购买，如果商品总额大于总资产，提示账户余额不足，否则，购买成功。</p>
-<p>附加：可充值、某商品移除购物车</p>
-<pre><code>goods = [
-    {&quot;name&quot;: &quot;电脑&quot;, &quot;price&quot;: 1999},
-    {&quot;name&quot;: &quot;鼠标&quot;, &quot;price&quot;: 10},
-    {&quot;name&quot;: &quot;游艇&quot;, &quot;price&quot;: 20},
-    {&quot;name&quot;: &quot;美女&quot;, &quot;price&quot;: 998},
-]
-print(&quot;输入0购买电脑，输入1购买鼠标，输入2购买游艇，输入3购买美女，输入其他数值，结算购物车&quot;)
-li = []
-total = input(&quot;请输入总金额：&quot;)
-while True:
-    num = input(&quot;输入要购买的序号：&quot;)
-    if int(num) == 0:
-        li.append(goods[0][&apos;price&apos;])
-    elif int(num) == 1:
-        li.append(goods[1][&apos;price&apos;])
-    elif int(num) == 2:
-        li.append(goods[2][&apos;price&apos;])
-    elif int(num) == 3:
-        li.append(goods[3][&apos;price&apos;])
-    else:
-        break
-sum = 0
-for i in li:
-    sum +=i
-    print(sum)
-if sum&gt;int(total):
-    print(&quot;余额不足&quot;)
-else:
-    print(&quot;购买成功&quot;)
 </code></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/10/python数据类型练习/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
