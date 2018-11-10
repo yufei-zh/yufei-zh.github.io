@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-18T08:09:58.294Z</updated>
+  <updated>2018-11-10T03:06:08.856Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python数据类型练习</title>
+    <link href="http://yoursite.com/2018/11/10/python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%BB%83%E4%B9%A0/"/>
+    <id>http://yoursite.com/2018/11/10/python数据类型练习/</id>
+    <published>2018-11-10T03:06:08.758Z</published>
+    <updated>2018-11-10T03:06:08.856Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="元素分类"><a href="#元素分类" class="headerlink" title="元素分类"></a>元素分类</h2><p>有如下值集合 [11,22,33,44,55,66,77,88,99,90…]，将所有大于 66 的值保存至字典的第一个key中，将小于 66 的值保存至第二个key的值中。<br>即： {‘k1’: 大于66的所有值, ‘k2’: 小于66的所有值}</p><pre><code>li=[11,22,33,44,55,66,77,88,99,90]dic={&apos;k1&apos;:[ ],&apos;k2&apos;:[ ]}for i in li:    print(i)    if i &gt;70:        dic[&apos;k1&apos;].append(i)    else:        dic[&apos;k2&apos;].append(i)print(dic)</code></pre><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>查找列表中元素，移除每个元素的空格，并查找以 a或A开头 并且以 c 结尾的所有元素。</p><p>li = [“alec”, “ aric”, “Alex”, “Tony”, “rain”]</p><p>tu = (“alec”, “ aric”, “Alex”, “Tony”, “rain”) </p><p>dic = {‘k1’: “alex”, ‘k2’: ‘ aric’,  “k3”: “Alex”, “k4”: “Tony”}</p><pre><code>li = [&quot;alec&quot;, &quot; aric&quot;, &quot;Alex&quot;, &quot;Tony&quot;, &quot;rain&quot;]tu = (&quot;alec&quot;, &quot; aric&quot;, &quot;Alex&quot;, &quot;Tony&quot;, &quot;rain&quot;)dic = {&apos;k1&apos;: &quot;alex&quot;, &apos;k2&apos;: &apos; aric&apos;,  &quot;k3&quot;: &quot;Alex&quot;, &quot;k4&quot;: &quot;Tony&quot;}ret = []for i in li:    i = i.strip()    if i.startswith(&apos;a&apos;or&apos;A&apos;) and i.endswith(&apos;c&apos;):        ret.append(i)for i in tu:    i = i.strip()    if i.startswith(&apos;a&apos;or&apos;A&apos;) and i.endswith(&apos;c&apos;):        ret.append(i)for i in dic:    i = i.strip()    if i.startswith(&apos;a&apos;or&apos;A&apos;) and i.endswith(&apos;c&apos;):        ret.append(i)print(ret)#结果：[&apos;alec&apos;, &apos;aric&apos;, &apos;alec&apos;, &apos;aric&apos;]</code></pre><h2 id="输出商品列表，用户输入序号，显示用户选中的商品"><a href="#输出商品列表，用户输入序号，显示用户选中的商品" class="headerlink" title="输出商品列表，用户输入序号，显示用户选中的商品"></a>输出商品列表，用户输入序号，显示用户选中的商品</h2><p>商品 li = [“手机”, “电脑”, ‘鼠标垫’, ‘游艇’]</p><pre><code>li=[&quot;手机&quot;,&quot;电脑&quot;,&quot;鼠标垫&quot;,&quot;游艇&quot;]print(&quot;0是手机，1是电脑，2是鼠标垫，3是游艇&quot;)num=input(&quot;请输入数字：&quot;)if num==&apos;0&apos;:    print(li[0])elif num==&apos;1&apos;:    print(li[1])elif num==&apos;2&apos;:    print(li[2])elif num==&apos;3&apos;:    print(li[3])else:    print(&apos;&apos;)</code></pre><h2 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h2><p>功能要求：</p><p>要求用户输入总资产，例如：2000</p><p>显示商品列表，让用户根据序号选择商品，加入购物车</p><p>购买，如果商品总额大于总资产，提示账户余额不足，否则，购买成功。</p><p>附加：可充值、某商品移除购物车</p><pre><code>goods = [    {&quot;name&quot;: &quot;电脑&quot;, &quot;price&quot;: 1999},    {&quot;name&quot;: &quot;鼠标&quot;, &quot;price&quot;: 10},    {&quot;name&quot;: &quot;游艇&quot;, &quot;price&quot;: 20},    {&quot;name&quot;: &quot;美女&quot;, &quot;price&quot;: 998},]print(&quot;输入0购买电脑，输入1购买鼠标，输入2购买游艇，输入3购买美女，输入其他数值，结算购物车&quot;)li = []total = input(&quot;请输入总金额：&quot;)while True:    num = input(&quot;输入要购买的序号：&quot;)    if int(num) == 0:        li.append(goods[0][&apos;price&apos;])    elif int(num) == 1:        li.append(goods[1][&apos;price&apos;])    elif int(num) == 2:        li.append(goods[2][&apos;price&apos;])    elif int(num) == 3:        li.append(goods[3][&apos;price&apos;])    else:        breaksum = 0for i in li:    sum +=i    print(sum)if sum&gt;int(total):    print(&quot;余额不足&quot;)else:    print(&quot;购买成功&quot;)</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;元素分类&quot;&gt;&lt;a href=&quot;#元素分类&quot; class=&quot;headerlink&quot; title=&quot;元素分类&quot;&gt;&lt;/a&gt;元素分类&lt;/h2&gt;&lt;p&gt;有如下值集合 [11,22,33,44,55,66,77,88,99,90…]，将所有大于 66 的值保存至字典的第一个ke
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python数据类型</title>
+    <link href="http://yoursite.com/2018/11/10/python%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://yoursite.com/2018/11/10/python基本数据类型/</id>
+    <published>2018-11-10T02:50:45.046Z</published>
+    <updated>2018-11-10T03:03:41.402Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="1-算数运算"><a href="#1-算数运算" class="headerlink" title="1.算数运算"></a>1.算数运算</h3><p><a href="https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161314894-1019011109.png" target="_blank" rel="noopener">https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161314894-1019011109.png</a><br><a id="more"></a></p><h3 id="2-比较运算"><a href="#2-比较运算" class="headerlink" title="2.比较运算"></a>2.比较运算</h3><p><a href="https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161447004-894625074.png" target="_blank" rel="noopener">https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161447004-894625074.png</a></p><h3 id="3-赋值运算"><a href="#3-赋值运算" class="headerlink" title="3.赋值运算"></a>3.赋值运算</h3><p><a href="https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161703379-1489017417.png" target="_blank" rel="noopener">https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161703379-1489017417.png</a></p><h3 id="4-逻辑运算"><a href="#4-逻辑运算" class="headerlink" title="4.逻辑运算"></a>4.逻辑运算</h3><p><a href="https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161741394-1837061851.png" target="_blank" rel="noopener">https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161741394-1837061851.png</a></p><h3 id="5-成员运算"><a href="#5-成员运算" class="headerlink" title="5.成员运算"></a>5.成员运算</h3><p><a href="https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161829426-1152133000.png" target="_blank" rel="noopener">https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161829426-1152133000.png</a></p><h3 id="6-基本数据类型"><a href="#6-基本数据类型" class="headerlink" title="6.基本数据类型"></a>6.基本数据类型</h3><p>所有对象所具备的方法都保存在类中。对象和类的关系，举个例子：哺乳动物是类；此类下有两个对象，一个为狗、一个为猫。哺乳动物有较多的属性和方法，属性如有耳朵、有嘴巴；方法如叫、跑。那么我们在定义具体的方法的时候只需针对哺乳动物这个类进行定义即可，然后它之下的对象便自动带有了具体的属性和方法，即猫和狗虽然没有定义，但是有耳朵、嘴巴，还会跑和叫。</p><h4 id="1-数字"><a href="#1-数字" class="headerlink" title="1.数字"></a>1.数字</h4><p>int（整型）</p><p>　　在32位机器上，整数的位数为32位，取值范围为-2<strong>31～2</strong>31-1，即-2147483648～2147483647<br>　　在64位系统上，整数的位数为64位，取值范围为-2<strong>63～2</strong>63-1，即-9223372036854775808～9223372036854775807</p><h4 id="2-布尔值"><a href="#2-布尔值" class="headerlink" title="2.布尔值"></a>2.布尔值</h4><pre><code>boolean</code></pre><p>　　真或假；1或0</p><h4 id="3-字符串"><a href="#3-字符串" class="headerlink" title="3.字符串"></a>3.字符串</h4><p>string</p><p>字符串常用功能：</p><blockquote><p>移除空白</p></blockquote><blockquote><p>分割</p></blockquote><blockquote><p>长度</p></blockquote><blockquote><p>索引</p></blockquote><blockquote><p>切片</p></blockquote><h4 id="4-列表"><a href="#4-列表" class="headerlink" title="4.列表"></a>4.列表</h4><p>创建列表</p><pre><code>name_list=[&quot;zhangsan&quot;,&quot;lisi&quot;,&quot;wangwu&quot;]orname_list=list[&quot;zhangsan&quot;,&quot;lisi&quot;,&quot;wangwu&quot;]</code></pre><p>基本操作：</p><blockquote><p>索引</p></blockquote><blockquote><p>切片</p></blockquote><blockquote><p>追加</p></blockquote><blockquote><p>删除</p></blockquote><blockquote><p>长度</p></blockquote><blockquote><p>切片</p></blockquote><blockquote><p>循环</p></blockquote><blockquote><p>包含</p></blockquote><h4 id="5-元组"><a href="#5-元组" class="headerlink" title="5.元组"></a>5.元组</h4><p>元组的创建:</p><pre><code>ages = (11, 22, 33, 44, 55)orages = tuple((11, 22, 33, 44, 55))</code></pre><p>基本操作：</p><blockquote><p>索引</p></blockquote><blockquote><p>切片</p></blockquote><blockquote><p>循环</p></blockquote><blockquote><p>长度</p></blockquote><blockquote><p>包含</p></blockquote><h4 id="6-字典（无序）"><a href="#6-字典（无序）" class="headerlink" title="6.字典（无序）"></a>6.字典（无序）</h4><p>字典的创建：</p><pre><code>person = {&quot;name&quot;: &quot;mr.wu&quot;, &apos;age&apos;: 18}orperson = dict({&quot;name&quot;: &quot;mr.wu&quot;, &apos;age&apos;: 18})</code></pre><p>常用操作：</p><blockquote><p>索引</p></blockquote><blockquote><p>新增</p></blockquote><blockquote><p>删除</p></blockquote><blockquote><p>键、值、键值对</p></blockquote><blockquote><p>循环</p></blockquote><blockquote><p>长度</p></blockquote><h4 id="7-set（集合）"><a href="#7-set（集合）" class="headerlink" title="7.set（集合）"></a>7.set（集合）</h4><p>set是一个无序且不重复的集合。</p><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="1-for循环"><a href="#1-for循环" class="headerlink" title="1.for循环"></a>1.for循环</h4><p>用户按照顺序循环可迭代对象中的内容，</p><p>PS：break、continue</p><pre><code>li = [11,22,33,44]for item in li:    print item</code></pre><h4 id="2、enumrate"><a href="#2、enumrate" class="headerlink" title="2、enumrate"></a>2、enumrate</h4><p>为可迭代的对象添加序号<br>    li = [11,22,33]<br>    for k,v in enumerate(li, 1):<br>        print(k,v)</p><h4 id="3、range和xrange"><a href="#3、range和xrange" class="headerlink" title="3、range和xrange"></a>3、range和xrange</h4><p>指定范围，生成指定的数字。python3.0仅剩余range方法。</p><pre><code>print range(1, 10)# 结果：[1, 2, 3, 4, 5, 6, 7, 8, 9]print range(1, 10, 2)# 结果：[1, 3, 5, 7, 9]print range(30, 0, -2)# 结果：[30, 28, 26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2]　</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;运算符&quot;&gt;&lt;a href=&quot;#运算符&quot; class=&quot;headerlink&quot; title=&quot;运算符&quot;&gt;&lt;/a&gt;运算符&lt;/h2&gt;&lt;h3 id=&quot;1-算数运算&quot;&gt;&lt;a href=&quot;#1-算数运算&quot; class=&quot;headerlink&quot; title=&quot;1.算数运算&quot;&gt;&lt;/a&gt;1.算数运算&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161314894-1019011109.png&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161314894-1019011109.png&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python入门</title>
+    <link href="http://yoursite.com/2018/11/10/python%E5%85%A5%E9%97%A8/"/>
+    <id>http://yoursite.com/2018/11/10/python入门/</id>
+    <published>2018-11-10T02:49:44.435Z</published>
+    <updated>2018-11-10T02:51:29.882Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-第一句python代码"><a href="#1-第一句python代码" class="headerlink" title="1.第一句python代码"></a>1.第一句python代码</h3><p>在任意文件夹下创建 z1.py 文件（文件路径使用英文，如：“E:\work\python\usr”），内容如下：</p><pre><code>print(&quot;hello world&quot;)</code></pre><p>执行z1.py，即在cmd命令行中，输入</p><pre><code>python E:\work\python\usr\z1.py</code></pre><p>python的内部执行过程如下：</p><a id="more"></a><p><a href="https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180103142448659-76768380.png" target="_blank" rel="noopener">https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180103142448659-76768380.png</a></p><h3 id="2-内容编码"><a href="#2-内容编码" class="headerlink" title="2.内容编码"></a>2.内容编码</h3><p>python解释器在加载 .py 文件中的代码时，会对内容进行编码（默认ascill）</p><p>ASCII（American Standard Code for Information Interchange，美国标准信息交换代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言，其最多只能用 8 位来表示（一个字节），即：2**8 = 256，所以，ASCII码最多只能表示 256 个符号。</p><p>显然ASCII码无法将世界上的各种文字和符号全部表示，所以，就需要新出一种可以代表所有字符和符号的编码，即：Unicode。</p><p>UTF-8，是对Unicode编码的压缩和优化。</p><p>在使用python时，应该显示的告诉python解释器，用什么编码来执行源代码，即：加上头文件</p><pre><code>#!/usr/bin/env python# -*- coding: utf-8 -*-print &quot;你好，世界&quot;　</code></pre><h3 id="3-注释"><a href="#3-注释" class="headerlink" title="3.注释"></a>3.注释</h3><p>　　单行注释 #内容</p><p>　　多行注释 “””内容”””　</p><h3 id="4-导入库的使用"><a href="#4-导入库的使用" class="headerlink" title="4.导入库的使用"></a>4.导入库的使用</h3><p>Python有大量的模块，从而使得开发Python程序非常简洁。类库有包括三中：</p><blockquote><p>Python内部提供的模块</p></blockquote><blockquote><p>业内开源的模块</p></blockquote><blockquote><p>程序员自己开发的模块</p></blockquote><pre><code>#!/usr/bin/env python# -*- coding: utf-8 -*-import (ku name)</code></pre><h3 id="5-pyc文件"><a href="#5-pyc文件" class="headerlink" title="5.pyc文件"></a>5.pyc文件</h3><p>执行Python代码时，如果导入了其他的 .py 文件，那么，执行过程中会自动生成一个与其同名的 .pyc 文件，该文件就是Python解释器编译之后产生的字节码。</p><p>ps：代码经过编译可以产生字节码；字节码通过反编译也可以得到代码。</p><h3 id="6-变量"><a href="#6-变量" class="headerlink" title="6.变量"></a>6.变量</h3><h4 id="1-声明变量"><a href="#1-声明变量" class="headerlink" title="1.声明变量"></a>1.声明变量</h4><pre><code>#!/usr/bin/env python# -*- coding: utf-8 -*-name = &quot;zaoyufeifei&quot;age = 22</code></pre><p>上述代码声明了两个变量，变量名为： name，变量name的值为：”zaoyufeifei”；age,变量age的值为22        </p><p>变量的作用：昵称，其代指内存里某个地址中保存的内容</p><p><a href="https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180105090432159-699593039.png" target="_blank" rel="noopener">https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180105090432159-699593039.png</a></p><p>变量定义的规则：</p><blockquote><p>变量名只能是 字母、数字或下划线的任意组合</p></blockquote><blockquote><p>变量名的第一个字符不能是数字</p></blockquote><blockquote><p>以下关键字不能声明为变量名:[‘and’, ‘as’, ‘assert’, ‘break’, ‘class’, ‘continue’, ‘def’, ‘del’, ‘elif’, ‘else’, ‘except’, ‘exec’, ‘finally’, ‘for’, ‘from’, ‘global’, ‘if’, ‘import’, ‘in’, ‘is’, ‘lambda’, ‘not’, ‘or’, ‘pass’, ‘print’, ‘raise’, ‘return’, ‘try’, ‘while’, ‘with’, ‘yield’]</p></blockquote><h4 id="2-变量赋值"><a href="#2-变量赋值" class="headerlink" title="2.变量赋值"></a>2.变量赋值</h4><pre><code>#!/usr/bin/env python# -*- coding: utf-8 -*-name1 = &quot;zaoyu&quot;name2 = &quot;feifei&quot;</code></pre><p><a href="https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180105090737299-2021506625.png" target="_blank" rel="noopener">https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180105090737299-2021506625.png</a></p><h3 id="7-输入"><a href="#7-输入" class="headerlink" title="7.输入"></a>7.输入</h3><pre><code>#!/usr/bin/env python# -*- coding: utf-8 -*-# 将用户输入的内容赋值给 name 变量name = raw_input(&quot;请输入用户名：&quot;)# 打印输入的内容print name</code></pre><p>输入密码时，如果想要不可见，需要利用getpass 模块中的 getpass方法，即：</p><pre><code>#!/usr/bin/env python# -*- coding: utf-8 -*-import getpass# 将用户输入的内容赋值给 name 变量pwd = getpass.getpass(&quot;请输入密码：&quot;)# 打印输入的内容print pwd</code></pre><h3 id="8、流程控制和缩进"><a href="#8、流程控制和缩进" class="headerlink" title="8、流程控制和缩进"></a>8、流程控制和缩进</h3><h4 id="1-用户登录验证"><a href="#1-用户登录验证" class="headerlink" title="1.用户登录验证"></a>1.用户登录验证</h4><pre><code>#!/usr/bin/env python# -*- coding: encoding -*-# 提示输入用户名和密码# 验证用户名和密码#     如果错误，则输出用户名或密码错误#     如果成功，则输出 欢迎，XXX!import getpassname = raw_input(&apos;请输入用户名：&apos;)pwd = getpass.getpass(&apos;请输入密码：&apos;)if name == &quot;zaoyu&quot; and pwd == &quot;cmd&quot;:    print &quot;欢迎，zaoyu！&quot;else:    print &quot;用户名和密码错误&quot;</code></pre><h4 id="2-根据用户内容输出其权限"><a href="#2-根据用户内容输出其权限" class="headerlink" title="2.根据用户内容输出其权限"></a>2.根据用户内容输出其权限</h4><pre><code># 根据用户输入内容打印其权限# alex --&gt; 超级管理员# eric --&gt; 普通管理员# tony,rain --&gt; 业务主管# 其他 --&gt; 普通用户name = raw_input(&apos;请输入用户名：&apos;)if name == &quot;zao&quot;：    print &quot;超级管理员&quot;elif name == &quot;yu&quot;:    print &quot;普通管理员&quot;elif name == &quot;fei&quot; or name == &quot;dafei&quot;:    print &quot;业务主管&quot;else:    print &quot;普通用户&quot;</code></pre><h3 id="9-while循环"><a href="#9-while循环" class="headerlink" title="9.while循环"></a>9.while循环</h3><h4 id="1-基本循环"><a href="#1-基本循环" class="headerlink" title="1.基本循环"></a>1.基本循环</h4><pre><code>while 条件:    # 循环体    # 如果条件为真，那么循环体则执行    # 如果条件为假，那么循环体不执行</code></pre><h4 id="2-break：用于退出所有循环"><a href="#2-break：用于退出所有循环" class="headerlink" title="2.break：用于退出所有循环"></a>2.break：用于退出所有循环</h4><pre><code>while True:    print &quot;123&quot;    break    print &quot;456&quot;</code></pre><h4 id="3-continue：跳出本次循环，继续下次循环"><a href="#3-continue：跳出本次循环，继续下次循环" class="headerlink" title="3.continue：跳出本次循环，继续下次循环"></a>3.continue：跳出本次循环，继续下次循环</h4><pre><code>while True:    print &quot;123&quot;    continue    print &quot;456&quot;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-第一句python代码&quot;&gt;&lt;a href=&quot;#1-第一句python代码&quot; class=&quot;headerlink&quot; title=&quot;1.第一句python代码&quot;&gt;&lt;/a&gt;1.第一句python代码&lt;/h3&gt;&lt;p&gt;在任意文件夹下创建 z1.py 文件（文件路径使用英文，如：“E:\work\python\usr”），内容如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;print(&amp;quot;hello world&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行z1.py，即在cmd命令行中，输入&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python E:\work\python\usr\z1.py
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;python的内部执行过程如下：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>第九届上海国际图书馆论坛</title>

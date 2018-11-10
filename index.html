@@ -301,6 +301,536 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/python数据类型练习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="皂雨霏霏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇飞丶站点">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/10/python数据类型练习/" itemprop="url">python数据类型练习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-10T11:06:08+08:00">
+                2018-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="元素分类"><a href="#元素分类" class="headerlink" title="元素分类"></a>元素分类</h2><p>有如下值集合 [11,22,33,44,55,66,77,88,99,90…]，将所有大于 66 的值保存至字典的第一个key中，将小于 66 的值保存至第二个key的值中。<br>即： {‘k1’: 大于66的所有值, ‘k2’: 小于66的所有值}</p>
+<pre><code>li=[11,22,33,44,55,66,77,88,99,90]
+dic={&apos;k1&apos;:[ ],&apos;k2&apos;:[ ]}
+for i in li:
+    print(i)
+    if i &gt;70:
+        dic[&apos;k1&apos;].append(i)
+    else:
+        dic[&apos;k2&apos;].append(i)
+print(dic)
+</code></pre><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>查找列表中元素，移除每个元素的空格，并查找以 a或A开头 并且以 c 结尾的所有元素。</p>
+<p>li = [“alec”, “ aric”, “Alex”, “Tony”, “rain”]</p>
+<p>tu = (“alec”, “ aric”, “Alex”, “Tony”, “rain”) </p>
+<p>dic = {‘k1’: “alex”, ‘k2’: ‘ aric’,  “k3”: “Alex”, “k4”: “Tony”}</p>
+<pre><code>li = [&quot;alec&quot;, &quot; aric&quot;, &quot;Alex&quot;, &quot;Tony&quot;, &quot;rain&quot;]
+tu = (&quot;alec&quot;, &quot; aric&quot;, &quot;Alex&quot;, &quot;Tony&quot;, &quot;rain&quot;)
+dic = {&apos;k1&apos;: &quot;alex&quot;, &apos;k2&apos;: &apos; aric&apos;,  &quot;k3&quot;: &quot;Alex&quot;, &quot;k4&quot;: &quot;Tony&quot;}
+ret = []
+for i in li:
+    i = i.strip()
+    if i.startswith(&apos;a&apos;or&apos;A&apos;) and i.endswith(&apos;c&apos;):
+        ret.append(i)
+for i in tu:
+    i = i.strip()
+    if i.startswith(&apos;a&apos;or&apos;A&apos;) and i.endswith(&apos;c&apos;):
+        ret.append(i)
+for i in dic:
+    i = i.strip()
+    if i.startswith(&apos;a&apos;or&apos;A&apos;) and i.endswith(&apos;c&apos;):
+        ret.append(i)
+print(ret)
+
+#结果：[&apos;alec&apos;, &apos;aric&apos;, &apos;alec&apos;, &apos;aric&apos;]
+</code></pre><h2 id="输出商品列表，用户输入序号，显示用户选中的商品"><a href="#输出商品列表，用户输入序号，显示用户选中的商品" class="headerlink" title="输出商品列表，用户输入序号，显示用户选中的商品"></a>输出商品列表，用户输入序号，显示用户选中的商品</h2><p>商品 li = [“手机”, “电脑”, ‘鼠标垫’, ‘游艇’]</p>
+<pre><code>li=[&quot;手机&quot;,&quot;电脑&quot;,&quot;鼠标垫&quot;,&quot;游艇&quot;]
+print(&quot;0是手机，1是电脑，2是鼠标垫，3是游艇&quot;)
+num=input(&quot;请输入数字：&quot;)
+if num==&apos;0&apos;:
+    print(li[0])
+elif num==&apos;1&apos;:
+    print(li[1])
+elif num==&apos;2&apos;:
+    print(li[2])
+elif num==&apos;3&apos;:
+    print(li[3])
+else:
+    print(&apos;&apos;)
+</code></pre><h2 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h2><p>功能要求：</p>
+<p>要求用户输入总资产，例如：2000</p>
+<p>显示商品列表，让用户根据序号选择商品，加入购物车</p>
+<p>购买，如果商品总额大于总资产，提示账户余额不足，否则，购买成功。</p>
+<p>附加：可充值、某商品移除购物车</p>
+<pre><code>goods = [
+    {&quot;name&quot;: &quot;电脑&quot;, &quot;price&quot;: 1999},
+    {&quot;name&quot;: &quot;鼠标&quot;, &quot;price&quot;: 10},
+    {&quot;name&quot;: &quot;游艇&quot;, &quot;price&quot;: 20},
+    {&quot;name&quot;: &quot;美女&quot;, &quot;price&quot;: 998},
+]
+print(&quot;输入0购买电脑，输入1购买鼠标，输入2购买游艇，输入3购买美女，输入其他数值，结算购物车&quot;)
+li = []
+total = input(&quot;请输入总金额：&quot;)
+while True:
+    num = input(&quot;输入要购买的序号：&quot;)
+    if int(num) == 0:
+        li.append(goods[0][&apos;price&apos;])
+    elif int(num) == 1:
+        li.append(goods[1][&apos;price&apos;])
+    elif int(num) == 2:
+        li.append(goods[2][&apos;price&apos;])
+    elif int(num) == 3:
+        li.append(goods[3][&apos;price&apos;])
+    else:
+        break
+sum = 0
+for i in li:
+    sum +=i
+    print(sum)
+if sum&gt;int(total):
+    print(&quot;余额不足&quot;)
+else:
+    print(&quot;购买成功&quot;)
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+	<div>
+  
+</div>
+	
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/python基本数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="皂雨霏霏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇飞丶站点">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/10/python基本数据类型/" itemprop="url">python数据类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-10T10:50:45+08:00">
+                2018-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="1-算数运算"><a href="#1-算数运算" class="headerlink" title="1.算数运算"></a>1.算数运算</h3><p><a href="https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161314894-1019011109.png" target="_blank" rel="noopener">https://images2017.cnblogs.com/blog/1296884/201801/1296884-20180108161314894-1019011109.png</a><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/10/python基本数据类型/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+	<div>
+  
+</div>
+	
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/python入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="皂雨霏霏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇飞丶站点">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/10/python入门/" itemprop="url">python入门</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-10T10:49:44+08:00">
+                2018-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="1-第一句python代码"><a href="#1-第一句python代码" class="headerlink" title="1.第一句python代码"></a>1.第一句python代码</h3><p>在任意文件夹下创建 z1.py 文件（文件路径使用英文，如：“E:\work\python\usr”），内容如下：</p>
+<pre><code>print(&quot;hello world&quot;)
+</code></pre><p>执行z1.py，即在cmd命令行中，输入</p>
+<pre><code>python E:\work\python\usr\z1.py
+</code></pre><p>python的内部执行过程如下：</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/10/python入门/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+	<div>
+  
+</div>
+	
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/第九届国际图书馆会议/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1020,459 +1550,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/sparql/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="皂雨霏霏">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/touxiang.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇飞丶站点">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/18/sparql/" itemprop="url">SPARQL查询语言</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T08:50:18+08:00">
-                2018-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识图谱/" itemprop="url" rel="index">
-                    <span itemprop="name">知识图谱</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>SPARQL的查询是基于结构化知识的，变无序数据为有序知识，让计算机理解Web信息，即语义Web。现如今，语义网适用于各个领域，包括语义出版、语义知识库等。SPARQL是针对以RDF框架进行存储的知识库进行检索的SQL语句，因此有一定SQL基础的话，学习会很容易。</p>
-<p>什么是语义网？</p>
-<p>语义网是一种使用可以被计算机理解的方式描述事物的网络。</p>
-<p>林俊杰是著名歌手。<br>小酒窝是林俊杰唱的。<br>林俊杰也是演员。<br>像这样的句子可以被人类理解。但是如何能够被计算机理解呢？<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/18/sparql/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-	
-	<div>
-  
-</div>
-	
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/python反射机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="皂雨霏霏">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/touxiang.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇飞丶站点">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/18/python反射机制/" itemprop="url">Python反射机制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T08:50:18+08:00">
-                2018-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>一个模块有变量、方法，如果我们在另一个模块中调用的时候会用到import。如果一开始不确定要导入的模块，如何通过手动输入模块名来实现功能呢？反射解决的就是这个问题，通过字符串的形式，导入模块；通过字符串的形式，去模块中寻找指定函数（或变量）并执行。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/18/python反射机制/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-	
-	<div>
-  
-</div>
-	
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/18/python1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="皂雨霏霏">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/touxiang.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="宇飞丶站点">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/18/python1/" itemprop="url">python入门练习题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-18T08:50:18+08:00">
-                2018-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>###1、使用while循环输入 1 2 3 4 5 6 8 9 10<br>    num = 1<br>    while num&lt;=10:<br>    if num ==7:<br>        num += 1<br>        continue<br>    print(num)<br>    num += 1<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/18/python1/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-	
-	<div>
-  
-</div>
-	
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1527,7 +1604,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
