@@ -100,7 +100,7 @@
 <meta property="og:image" content="https://images2017.cnblogs.com/blog/1296884/201712/1296884-20171222174534537-1485277351.png">
 <meta property="og:image" content="https://images2017.cnblogs.com/blog/1296884/201712/1296884-20171222174551975-1358372892.png">
 <meta property="og:image" content="https://images2017.cnblogs.com/blog/1296884/201712/1296884-20171222174732631-475842844.png">
-<meta property="og:updated_time" content="2018-10-18T07:44:16.900Z">
+<meta property="og:updated_time" content="2018-11-12T03:29:21.318Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lucene实现索引和查询">
 <meta name="twitter:description" content="1.引言随着万维网的发展和大数据时代的到来，每天都有大量的数字化信息在生产、存储、传递和转化，如何从大量的信息中以一定的方式找到满足自己需求的信息，使之有序化并加以利用成为一大难题。全文检索技术是现如今最普遍的信息查询应用，生活中利用搜索引擎，在博客论坛中查找信息，这些搜索的核心原理就是本文要实现的全文检索技术。随着文档信息数字化的实现，将信息有效存储并及时准确的提取是每一个公司、企业和单位要做好">
@@ -402,7 +402,8 @@
       
 
       
-        <h3 id="1-引言"><a href="#1-引言" class="headerlink" title="1.引言"></a>1.引言</h3><p>随着万维网的发展和大数据时代的到来，每天都有大量的数字化信息在生产、存储、传递和转化，如何从大量的信息中以一定的方式找到满足自己需求的信息，使之有序化并加以利用成为一大难题。全文检索技术是现如今最普遍的信息查询应用，生活中利用搜索引擎，在博客论坛中查找信息，这些搜索的核心原理就是本文要实现的全文检索技术。随着文档信息数字化的实现，将信息有效存储并及时准确的提取是每一个公司、企业和单位要做好的基础。针对英文的全文检索已经有很多成熟的理论和方法，开放源代码的全文检索引擎Lucene 是Apache 软件基金会Jakarta 项目组的一个子项目，它的目的是为软件开发人员提供一个简单易用的工具包，方便在目标系统中实现全文检索的功能。Lucene不支持中文，但是目前已有很多开源的中文分词器可以对中文内容进行索引，本文在研究Lucene核心原理的基础上，分别实现了对中英文网页的爬取和检索。<br><a id="more"></a></p>
+        <h3 id="1-引言"><a href="#1-引言" class="headerlink" title="1.引言"></a>1.引言</h3><p>随着万维网的发展和大数据时代的到来，每天都有大量的数字化信息在生产、存储、传递和转化，如何从大量的信息中以一定的方式找到满足自己需求的信息，使之有序化并加以利用成为一大难题。全文检索技术是现如今最普遍的信息查询应用，生活中利用搜索引擎，在博客论坛中查找信息，这些搜索的核心原理就是本文要实现的全文检索技术。随着文档信息数字化的实现，将信息有效存储并及时准确的提取是每一个公司、企业和单位要做好的基础。针对英文的全文检索已经有很多成熟的理论和方法，开放源代码的全文检索引擎Lucene 是Apache 软件基金会Jakarta 项目组的一个子项目，它的目的是为软件开发人员提供一个简单易用的工具包，方便在目标系统中实现全文检索的功能。Lucene不支持中文，但是目前已有很多开源的中文分词器可以对中文内容进行索引，本文在研究Lucene核心原理的基础上，分别实现了对中英文网页的爬取和检索。</p>
+<a id="more"></a>
 <h3 id="2-Lucene介绍"><a href="#2-Lucene介绍" class="headerlink" title="2.Lucene介绍"></a>2.Lucene介绍</h3><h4 id="2-1-lucene-简介"><a href="#2-1-lucene-简介" class="headerlink" title="2.1 lucene 简介"></a>2.1 lucene 简介</h4><p>Lucene是一个用Java写的全文检索引擎工具包，实现构造了索引和搜索两大核心功能，并且两者相互独立，这使得开发人员可以方便扩展，Lucene提供了丰富的API , 可以与存储在索引中的信息方便的交互。需要说明的是它并不是一个完整的全文检索应用, 而是为应用程序提供索引和搜索功能。即若想让Lucene 真正起作用, 还需在其基础上做一些必要的二次开发。</p>
 <p>Lucene的结构设计与数据库的设计较为相似，但Lucene的索引与数据库有着极大的不同。数据库和Lucene建立索引都是为了查找方便，但是数据库仅仅针对部分字段进行建立，且需要把数据转化为格式化信息，并予以保存。而全文检索是将全部信息按照一定方式进行索引。两种检索的不同和相似如表1-1所示。</p>
 <p><center> 表1-1：数据库检索与Lucene检索对比 </center><br><img src="https://i.imgur.com/uwQlJb1.png" alt=""></p>
@@ -631,7 +632,7 @@ highlighter.setTextFragmenter(fragmenter);
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/18/markdown基于语法/" rel="prev" title="Markdown基础语法">
+              <a href="/2018/10/18/markdown基本语法/" rel="prev" title="Markdown基础语法">
                 Markdown基础语法 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -714,7 +715,7 @@ highlighter.setTextFragmenter(fragmenter);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -736,7 +737,7 @@ highlighter.setTextFragmenter(fragmenter);
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -835,11 +836,13 @@ highlighter.setTextFragmenter(fragmenter);
 
 
 
-<div class="powered-by">
-<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
-  本站访客数:<span id="busuanzi_value_site_uv"></span>
-</span>
-</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
 
 
 

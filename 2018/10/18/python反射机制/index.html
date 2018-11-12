@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="1.前言一个模块有变量、方法，如果我们在另一个模块中调用的时候会用到import。如果一开始不确定要导入的模块，如何通过手动输入模块名来实现功能呢？反射解决的就是这个问题，通过字符串的形式，导入模块；通过字符串的形式，去模块中寻找指定函数（或变量）并执行。">
+<meta name="description" content="1.前言一个模块有变量、方法，如果我们在另一个模块中调用的时候会用到import。如果一开始不确定要导入的模块，如何通过手动输入模块名来实现功能呢？反射解决的就是这个问题，通过字符串的形式，导入模块；通过字符串的形式，去模块中寻找指定函数（或变量）并执行。 #test.py: def f1():     print(&amp;quot;F1&amp;quot;) def f2():     print(&amp;quot">
 <meta name="keywords" content="python 反射">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python反射机制">
 <meta property="og:url" content="http://yoursite.com/2018/10/18/python反射机制/index.html">
 <meta property="og:site_name" content="宇飞丶站点">
-<meta property="og:description" content="1.前言一个模块有变量、方法，如果我们在另一个模块中调用的时候会用到import。如果一开始不确定要导入的模块，如何通过手动输入模块名来实现功能呢？反射解决的就是这个问题，通过字符串的形式，导入模块；通过字符串的形式，去模块中寻找指定函数（或变量）并执行。">
+<meta property="og:description" content="1.前言一个模块有变量、方法，如果我们在另一个模块中调用的时候会用到import。如果一开始不确定要导入的模块，如何通过手动输入模块名来实现功能呢？反射解决的就是这个问题，通过字符串的形式，导入模块；通过字符串的形式，去模块中寻找指定函数（或变量）并执行。 #test.py: def f1():     print(&amp;quot;F1&amp;quot;) def f2():     print(&amp;quot">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-26T02:22:38.942Z">
+<meta property="og:updated_time" content="2018-11-12T03:28:56.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python反射机制">
-<meta name="twitter:description" content="1.前言一个模块有变量、方法，如果我们在另一个模块中调用的时候会用到import。如果一开始不确定要导入的模块，如何通过手动输入模块名来实现功能呢？反射解决的就是这个问题，通过字符串的形式，导入模块；通过字符串的形式，去模块中寻找指定函数（或变量）并执行。">
+<meta name="twitter:description" content="1.前言一个模块有变量、方法，如果我们在另一个模块中调用的时候会用到import。如果一开始不确定要导入的模块，如何通过手动输入模块名来实现功能呢？反射解决的就是这个问题，通过字符串的形式，导入模块；通过字符串的形式，去模块中寻找指定函数（或变量）并执行。 #test.py: def f1():     print(&amp;quot;F1&amp;quot;) def f2():     print(&amp;quot">
 
 
 
@@ -390,7 +390,7 @@
       
 
       
-        <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>一个模块有变量、方法，如果我们在另一个模块中调用的时候会用到import。如果一开始不确定要导入的模块，如何通过手动输入模块名来实现功能呢？反射解决的就是这个问题，通过字符串的形式，导入模块；通过字符串的形式，去模块中寻找指定函数（或变量）并执行。<br><a id="more"></a></p>
+        <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>一个模块有变量、方法，如果我们在另一个模块中调用的时候会用到import。如果一开始不确定要导入的模块，如何通过手动输入模块名来实现功能呢？反射解决的就是这个问题，通过字符串的形式，导入模块；通过字符串的形式，去模块中寻找指定函数（或变量）并执行。</p>
 <pre><code>#test.py:
 def f1():
     print(&quot;F1&quot;)
@@ -398,7 +398,8 @@ def f2():
     print(&quot;F2&quot;)
 
 i = 5
-</code></pre><p>使用import调用test中的方法和变量</p>
+</code></pre><a id="more"></a>
+<p>使用import调用test中的方法和变量</p>
 <pre><code>import test as fun
 fun.f1()
 fun.f2()
@@ -598,7 +599,7 @@ if __name__ == &apos;__main__&apos;:
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -620,7 +621,7 @@ if __name__ == &apos;__main__&apos;:
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -719,11 +720,13 @@ if __name__ == &apos;__main__&apos;:
 
 
 
-<div class="powered-by">
-<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
-  本站访客数:<span id="busuanzi_value_site_uv"></span>
-</span>
-</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
 
 
 
